@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://epignosisbooks.netlify.app/sitemap.xml

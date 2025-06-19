@@ -8,6 +8,35 @@
   <meta name="keywords" content="eBooks cristãos, fé, espiritualidade, Martinho Madureira, PDF, livros digitais, Bíblia" />
   <link rel="icon" href="assets/images/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8G6QGY8B2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8G6QGY8B2');
+</script>
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Epignósis Digital Books",
+  "url": "https://epignosisbooks.netlify.app",
+  "logo": "https://epignosisbooks.netlify.app/assets/images/favion.ico",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=100083436668190",
+    "https://www.instagram.com/martinhossmadureira?igsh=bjM2bHUxMTFxc2px",
+    "https://www.youtube.com/@martinhossmadureira"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Martinho S. S. Madureira"
+  }
+}
+</script>
 </head>
 <body class="bg-white text-gray-900 font-sans">
 
@@ -30,11 +59,46 @@
     <p class="text-lg mb-8 text-gray-700">Um Novo Livro é a abertura para um Novo Mundo. Ler um Livro não é perder tempo, mas sim, Investir tempo afiando o Machado antes de derrubar árvores</p>
     <a href="ebooks.html" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-8 py-3 rounded-full transition">Ver eBooks</a>
   </main>
+  <section class="mt-16">
+  <h3 class="text-2xl font-bold text-center mb-6">Destaques da Semana</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white shadow-md rounded p-4">
+      <img src="assets/images/ebook1.jpg" class="h-48 w-full object-cover rounded mb-3" />
+      <h4 class="font-bold text-lg">Namoro Para Vida Toda</h4>
+      <p class="text-sm text-gray-600 mb-2">Princípios Bíblicos sobre o Namoro</p>
+      <a href="ebook.html" class="text-yellow-500 hover:underline">Ver mais</a>
+    </div>
+    <!-- Podes duplicar mais blocos -->
+  </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-sm text-center py-6 mt-20">
     <p>&copy; 2025 Martinho S. S. Madureira | Epignósis Digital Books. Todos os direitos reservados.</p>
+    <div class="flex justify-center space-x-4 mb-2">
+          <a href="https://www.instagram.com/martinhossmadureira?igsh=bjM2bHUxMTFxc2px" target="_blank" aria-label="Instagram">
+          <img src="../images/icons/instagram.png" alt="Instagram" class="w-6 h-6">
+          </a>
+          <a href="https://www.tiktok.com/@martinhossmadureira" target="_blank" aria-label="TikTok">
+          <img src="../images/icons/tiktok.png" alt="TikTok" class="w-6 h-6">
+          </a>
+          <a href="https://www.youtube.com/@martinhossmadureira" target="_blank" aria-label="Youtube">
+          <img src="../images/icons/youtube.png" alt="YouTube" class="w-6 h-6">
+          <a href="https://wa.me/244927791547" target="_blank" aria-label="Whatsapp">
+          <img src="../images/icons/whatsapp.png" alt="Whatsapp" class="w-6 h-6">
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100083436668190" target="_blank" aria-label="Facebook">
+          <img src="../images/icons/facebook.png" alt="Facebook" class="w-6 h-6">
+          </a>
+          </div>
   </footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<div data-aos="fade-up">Jesus te Ama</div>
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+  class="fixed bottom-6 right-6 bg-yellow-400 hover:bg-yellow-500 text-white font-bold p-3 rounded-full shadow-lg z-50">
+  ↑
+</button>
 
 </body>
 </html>
