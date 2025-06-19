@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ebook01",
+    "titulo": "Namoro Para a Vida Toda",
+    "descricao": "Um mergulho profundo na sobre o pensamento de Deus acerca do Namoro, Namoros bem sucedidos, são primicias de Casamentos Felizes. Neste Ebook único o Autor apresenta os princípios Bíblicos que sustentam um Namoro para a Vida Toda",
+    "capa": "assets/images/NPVT.jpg",
+    "link_pagamento": "https://payhip.com/b/XxxX1"
+  },
+  {
+    "id": "ebook02",
+    "titulo": "As Janelas do Céu - A Maravilhosa Bênção de Provisão",
+    "descricao": "Deus não nos ama por causa de algo que fazemos, mas apesar de tudo que fazemos, Deus não tem a obrigação de nos Amar. Semelhantemente, não tem a de nos cuidar, neste ebook o autor, nos faz conhecer o cuidado de Deus e sua provisão constante, mediante uma exposição das Janelas do Céu, o que é? há janelas no céu?.",
+    "capa": "assets/images/Janelas-Céu.png",
+    "link_pagamento": "https://payhip.com/b/XxxX2"
+  }
+]

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto – Epignósis Digital Books</title>
+  <meta name="description" content="Entra em contacto com Martinho S. S. Madureira – autor e fundador da Epignósis Digital Books." />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Epignósis Digital Books</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-yellow-400">Início</a>
+        <a href="ebooks.html" class="hover:text-yellow-400">eBooks</a>
+        <a href="about.html" class="hover:text-yellow-400">Sobre</a>
+        <a href="contact.html" class="hover:text-yellow-400">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Formulário de contacto -->
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold mb-6 text-center">📬 Contacta-nos</h2>
+    <p class="text-lg text-gray-700 mb-8 text-center">Tens dúvidas, pedidos de oração ou parcerias? Envia-nos uma mensagem.</p>
+
+    <form name="contact" method="POST" data-netlify="true" class="space-y-6 bg-gray-50 p-8 rounded-lg shadow-md">
+      <!-- Campo oculto obrigatório -->
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div>
+        <label class="block font-semibold mb-1">Nome</label>
+        <input type="text" name="nome" required class="w-full border border-gray-300 rounded px-4 py-2" />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Email</label>
+        <input type="email" name="email" required class="w-full border border-gray-300 rounded px-4 py-2" />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Mensagem</label>
+        <textarea name="mensagem" rows="5" required class="w-full border border-gray-300 rounded px-4 py-2"></textarea>
+      </div>
+
+      <div>
+        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold px-6 py-2 rounded">Enviar</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-sm text-center py-6 mt-20">
+    <p>&copy; 2025 Martinho S. S. Madureira | Epignósis Digital Books</p>
+  </footer>
+
+</body>
+</html>

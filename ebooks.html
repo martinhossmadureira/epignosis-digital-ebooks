@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eBooks – Epignósis Digital Books</title>
+  <meta name="description" content="Explora a nossa coleção de eBooks digitais cristãos." />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold"> Epignósis Digital Books</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-yellow-400">Início</a>
+        <a href="ebooks.html" class="hover:text-yellow-400">eBooks</a>
+        <a href="about.html" class="hover:text-yellow-400">Sobre</a>
+        <a href="contact.html" class="hover:text-yellow-400">Contacto</a>
+      </nav>
+    </div>
+  </header>
+<!-- Filtros -->
+<div class="mb-8 text-center space-y-4">
+  <!-- Barra de Pesquisa -->
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Pesquisar título do eBook..."
+    class="border border-gray-300 px-4 py-2 rounded w-full max-w-md"
+  />
+
+  <!-- Filtro por Letras -->
+  <div id="letrasFiltro" class="flex flex-wrap justify-center gap-2 mt-4">
+    <button class="filtro-letra bg-gray-200 px-3 py-1 rounded hover:bg-yellow-400" data-letra="todos">Todos</button>
+    <template id="letra-template">
+      <button class="filtro-letra bg-gray-200 px-3 py-1 rounded hover:bg-yellow-400" data-letra=""></button>
+    </template>
+  </div>
+</div>
+
+<!-- Área dos eBooks -->
+<div id="ebooksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+  <!-- Conteúdo principal -->
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-4xl font-bold text-center mb-10"> Os Nossos eBooks</h2>
+    <div id="ebooksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-sm text-center py-6 mt-20">
+    <p>&copy; 2025 Martinho S. S. Madureira | Epignósis Digital Books</p>
+  </footer>
+
+  <!-- Script para carregar os eBooks -->
+  <script>
+    fetch('data/ebooks.json')
+      .then(response => response.json())
+      .then(ebooks => {
+        const container = document.getElementById('ebooksContainer');
+
+        ebooks.forEach(ebook => {
+          const card = document.createElement('div');
+          card.className = "border rounded-lg overflow-hidden shadow hover:shadow-lg transition";
+
+          card.innerHTML = `
+            <img src="${ebook.capa}" alt="${ebook.titulo}" class="w-full h-64 object-cover">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">${ebook.titulo}</h3>
+              <p class="text-gray-700 mb-4">${ebook.descricao}</p>
+              <a href="${ebook.link_pagamento}" target="_blank" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold px-4 py-2 rounded">Comprar</a>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById('ebooksContainer').innerHTML = "<p class='text-red-600'>Erro ao carregar eBooks.</p>";
+        console.error("Erro:", err);
+      });
+
+      let todosEbooks = [];
+
+  // Função para renderizar eBooks no container
+  function renderizarEbooks(ebooks) {
+    const container = document.getElementById('ebooksContainer');
+    container.innerHTML = '';
+
+    if (ebooks.length === 0) {
+      container.innerHTML = '<p class="col-span-3 text-center text-gray-500">Nenhum eBook encontrado.</p>';
+      return;
+    }
+
+    ebooks.forEach(ebook => {
+      const card = document.createElement('div');
+      card.className = "border rounded-lg overflow-hidden shadow hover:shadow-lg transition";
+
+      card.innerHTML = `
+        <img src="${ebook.capa}" alt="${ebook.titulo}" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">${ebook.titulo}</h3>
+          <p class="text-gray-700 mb-4">${ebook.descricao}</p>
+          <a href="${ebook.link_pagamento}" target="_blank" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold px-4 py-2 rounded">Comprar</a>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  // Carrega os eBooks do ficheiro JSON
+  fetch('data/ebooks.json')
+    .then(response => response.json())
+    .then(ebooks => {
+      todosEbooks = ebooks;
+      renderizarEbooks(todosEbooks);
+      criarFiltroPorLetra(todosEbooks);
+    })
+    .catch(err => {
+      document.getElementById('ebooksContainer').innerHTML = "<p class='text-red-600'>Erro ao carregar eBooks.</p>";
+      console.error("Erro:", err);
+    });
+
+  // Barra de pesquisa
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const termo = this.value.toLowerCase();
+    const filtrados = todosEbooks.filter(e => e.titulo.toLowerCase().includes(termo));
+    renderizarEbooks(filtrados);
+  });
+
+  // Criar botões de letras
+  function criarFiltroPorLetra(ebooks) {
+    const letrasUnicas = Array.from(new Set(ebooks.map(e => e.titulo.charAt(0).toUpperCase()))).sort();
+    const letrasDiv = document.getElementById('letrasFiltro');
+    const template = document.getElementById('letra-template');
+
+    letrasUnicas.forEach(letra => {
+      const btn = template.content.cloneNode(true);
+      const botao = btn.querySelector('button');
+      botao.textContent = letra;
+      botao.dataset.letra = letra;
+      letrasDiv.appendChild(botao);
+    });
+
+    // Evento de clique nos filtros
+    letrasDiv.addEventListener('click', function (e) {
+      if (!e.target.classList.contains('filtro-letra')) return;
+      const letra = e.target.dataset.letra;
+
+      if (letra === 'todos') {
+        renderizarEbooks(todosEbooks);
+      } else {
+        const filtrados = todosEbooks.filter(e => e.titulo.startsWith(letra));
+        renderizarEbooks(filtrados);
+      }
+    });
+  }
+  </script>
+</body>
+</html>
